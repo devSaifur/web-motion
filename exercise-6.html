@@ -110,32 +110,23 @@
         margin: 0;
       }
 
-      .cloudy {
-        background: var(--color-cloudy) url(/images/cloudy@c.png);
+      .cloudy,
+      .sunny,
+      .rainy,
+      .thunderstorms {
+        background: var(--color-cloudy) url(/images/weather.jpeg);
       }
 
       .cloudy .readings li {
         background-color: var(--color-cloudy-shade);
       }
 
-      .sunny {
-        background: var(--color-sunny) url(images/sunny@c.png);
-      }
-
       .sunny .readings li {
         background-color: var(--color-sunny-shade);
       }
 
-      .rainy {
-        background: var(--color-rainy) url(images/rainy@c.png);
-      }
-
       .rainy .readings li {
         background-color: var(--color-rainy-shade);
-      }
-
-      .thunderstorms {
-        background: var(--color-thunderstorms) url(images/thunderstorms@c.png);
       }
 
       .thunderstorms .readings li {
@@ -257,7 +248,54 @@
         transition-property: flex-basis, background-size, padding;
       }
 
-      .accordion--item {
+      .accordion--item:hover:not(.opened) {
+        background-size: 32rem;
+        padding-block: 3rem;
+      }
+
+      .accordion--item:hover(.opened) .bottom-temp {
+        transform: translate3d(0, -1rem, 0);
+      }
+
+      .accordion--item:hover:not(.opened) .bottom-temp {
+        transform: translate3d(0, -1rem, 0);
+      }
+
+      .bottom-temp {
+        transition-property: transform, opacity;
+      }
+
+      .temp,
+      .readings {
+        transition: opacity, transform;
+      }
+
+      .temp {
+        transform: translate3d(0, -4rem, 0);
+      }
+
+      .readings {
+        transform: translate3d(0, 4rem, 0);
+      }
+
+      .opened .temp,
+      .opened .readings {
+        transform: translate3d(0, 0, 0);
+      }
+
+      .opened .bottom-temp {
+        transform: translate3d(0 2rem, 0);
+      }
+
+      .date li:nth-child(2) {
+        transition-property: color;
+      }
+
+      .accordion--item,
+      .bottom-temp,
+      .temp,
+      .readings,
+      .date li:nth-child(2) {
         transition-duration: var(--def-transition-duration);
         transition-timing-function: ease-in-out;
       }
